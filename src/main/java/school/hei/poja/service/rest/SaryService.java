@@ -14,7 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import school.hei.poja.PojaGenerated;
 
-@PojaGenerated
+
 @Service
 @AllArgsConstructor
 @Slf4j
