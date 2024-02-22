@@ -35,25 +35,6 @@ public class SaryController {
 
   private static final String HEALTH_KEY = "photo/";
 
-  @GetMapping(value = "/health/bucket")
-  public ResponseEntity<String> file_can_be_uploaded_then_signed() throws IOException {
-    var fileSuffix = ".txt";
-    var filePrefix = randomUUID().toString();
-    var fileToUpload = createTempFile(filePrefix, fileSuffix);
-    writeRandomContent(fileToUpload);
-    var fileBucketKey = HEALTH_KEY + filePrefix + fileSuffix;
-    can_upload_file_then_download_file(fileToUpload, fileBucketKey);
-
-    var directoryPrefix = "dir-" + randomUUID();
-    var directoryToUpload = createTempDirectory(directoryPrefix).toFile();
-    var fileInDirectory =
-        new File(directoryToUpload.getAbsolutePath() + "/" + randomUUID() + ".txt");
-    writeRandomContent(fileInDirectory);
-    var directoryBucketKey = HEALTH_KEY + directoryPrefix;
-    can_upload_directory(directoryToUpload, directoryBucketKey);
-
-    return ResponseEntity.of(Optional.of(can_presign(fileBucketKey).toString()));
-  }
 
   @PutMapping(
       value = "/photo/{Id}",
