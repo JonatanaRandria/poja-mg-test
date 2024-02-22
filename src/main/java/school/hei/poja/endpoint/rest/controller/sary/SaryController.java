@@ -39,7 +39,7 @@ public class SaryController {
   @PutMapping(
       value = "/photo/{Id}",
       consumes = {MediaType.IMAGE_PNG_VALUE, MediaType.IMAGE_JPEG_VALUE})
-  public ResponseEntity<String> addNewPhoto(@PathVariable String Id, @RequestBody byte[] image)
+  public ResponseEntity<Void> addNewPhoto(@PathVariable String Id, @RequestBody byte[] image)
       throws Exception {
     byte[] GrayImage;
 
@@ -56,7 +56,7 @@ public class SaryController {
     can_upload_file_then_download_file(imageToUpload, Id);
     can_upload_file_then_download_file(imageGrayToUpload, file2BucketKey);
 
-    return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body();
+    return ResponseEntity.status(HttpStatus.OK).build();
   }
 
   @GetMapping("/photo/{id}")
