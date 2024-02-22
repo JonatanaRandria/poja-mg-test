@@ -12,10 +12,12 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import school.hei.poja.PojaGenerated;
 
 @Service
 @AllArgsConstructor
 @Slf4j
+@PojaGenerated
 public class SaryService {
   public byte[] toGRay(byte[] image) throws Exception {
     InputStream post_image = new ByteArrayInputStream(image);
