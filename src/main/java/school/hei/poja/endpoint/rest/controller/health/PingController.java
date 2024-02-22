@@ -12,7 +12,6 @@ import school.hei.poja.repository.DummyUuidRepository;
 @PojaGenerated
 @RestController
 @AllArgsConstructor
-
 public class PingController {
 
   DummyRepository dummyRepository;

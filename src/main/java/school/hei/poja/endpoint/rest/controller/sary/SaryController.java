@@ -1,7 +1,5 @@
 package school.hei.poja.endpoint.rest.controller.sary;
 
-import static java.io.File.createTempFile;
-import static java.nio.file.Files.createTempDirectory;
 import static java.util.UUID.randomUUID;
 import static school.hei.poja.file.FileHashAlgorithm.NONE;
 
@@ -17,7 +15,6 @@ import java.util.Optional;
 import lombok.AllArgsConstructor;
 import org.apache.commons.io.FileUtils;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -36,7 +33,6 @@ public class SaryController {
   SaryService service;
 
   private static final String HEALTH_KEY = "photo/";
-
 
   @PutMapping(
       value = "/photo/{Id}",
