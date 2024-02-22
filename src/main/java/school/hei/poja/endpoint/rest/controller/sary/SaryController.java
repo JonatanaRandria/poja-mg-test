@@ -23,12 +23,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import school.hei.poja.PojaGenerated;
 import school.hei.poja.file.BucketComponent;
 import school.hei.poja.file.FileHash;
 import school.hei.poja.service.rest.SaryService;
 
-@PojaGenerated
 @RestController
 @AllArgsConstructor
 public class SaryController {
