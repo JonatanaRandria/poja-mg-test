@@ -14,7 +14,9 @@ import java.util.Map;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
 import org.apache.commons.io.FileUtils;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -36,9 +38,9 @@ public class SaryController {
 
   @PutMapping(
       value = "/photo/{Id}",
-      consumes = {MediaType.IMAGE_PNG_VALUE, MediaType.IMAGE_JPEG_VALUE},
-      produces = {MediaType.IMAGE_PNG_VALUE, MediaType.IMAGE_JPEG_VALUE})
-  public void addNewPhoto(@PathVariable String Id, @RequestBody byte[] image) throws Exception {
+      consumes = {MediaType.IMAGE_PNG_VALUE, MediaType.IMAGE_JPEG_VALUE})
+  public ResponseEntity<String> addNewPhoto(@PathVariable String Id, @RequestBody byte[] image)
+      throws Exception {
     byte[] GrayImage;
 
     var file2BucketKey = Id + "-gray";
@@ -53,6 +55,8 @@ public class SaryController {
 
     can_upload_file_then_download_file(imageToUpload, Id);
     can_upload_file_then_download_file(imageGrayToUpload, file2BucketKey);
+
+    return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body();
   }
 
   @GetMapping("/photo/{id}")
